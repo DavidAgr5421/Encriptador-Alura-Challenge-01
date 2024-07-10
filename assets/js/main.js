@@ -79,41 +79,40 @@ function encrypt(){
 
 }
 
-function decrypt(){
-    if(input.length != 0){
-        input_text = input.value.toLowerCase();
+function decrypt() {
+    if (inputarea.value.length != 0) {
+        let input_text = inputarea.value.toLowerCase();
         inputarea.value = "";
 
         let test_txt = /^[a-z\s]+$/;
-        decrypted_text = ""
+        let decrypted_text = "";
 
-        if(input_text.match(test_txt)){
+        if (input_text.match(test_txt)) {
             while (input_text.length > 0) {
                 let found = false;
                 for (let key in decrypt_dct) {
-                  if (input_text.startsWith(decrypt_dct[key])) {
-                    decrypted_text += key;
-                    input_text = input_text.slice(decrypt_dct[key].length);
-                    found = true;
-                    break;
-                  }
+                    if (input_text.startsWith(key)) {
+                        decrypted_text += decrypt_dct[key];
+                        input_text = input_text.slice(key.length);
+                        found = true;
+                        break;
+                    }
                 }
                 if (!found) {
-                  decrypted_text += input_text[0];
-                  input_text = input_text.slice(1);
+                    decrypted_text += input_text[0];
+                    input_text = input_text.slice(1);
                 }
-              }
-            
-              show_output(decrypted_text);
-        }
-        else{
-            revert()
-            alert("El texto a desencriptar no puede contener números o acentos...")
+            }
+
+            show_output(decrypted_text);
+        } else {
+            revert();
+            alert("El texto a desencriptar no puede contener números o acentos...");
         }
 
-    } else{
-        revert()
-        alert("No has introducido un texto que desencriptar...")
+    } else {
+        revert();
+        alert("No has introducido un texto que desencriptar...");
     }
 }
 
