@@ -1,0 +1,183 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+/*------------*/
+/* Variables */
+/*----------*/
+
+:root{
+    --blue: #6E9CC7;
+    --gray: #0000007e;
+    --dark-bg: #0a0a0a;
+    --dark-text: #e0e0e0;
+    --dark-border: #dadada;
+}
+
+.text-gray{
+    color:var(--gray);
+}
+
+.text-blue{
+    color:var(--blue);
+}
+
+/*--------*/
+/* Header */
+/*--------*/
+
+*{
+    font-family : "Roboto", sans-serif;
+}
+
+header h1{   
+    display: inline;
+    margin-top: 10px;
+}
+
+#encripter_header{
+    width: calc(1.375rem + 1.5vw);
+    vertical-align: text-bottom;
+}
+
+.switcher-h{
+    width: 2.5em !important;
+    height: 1.5em;
+    border: 2px solid rgba(0, 0, 0, 0.589);
+}
+
+.switcher-h:checked{
+    background-color: black;
+    border-color: rgb(255, 255, 255);
+}
+
+/*-------------------*/
+/* Encrypt Buttons  */
+/*-----------------*/
+
+.col .encrypt, .decrypt{
+    border: 1px solid rgba(0, 0, 0, 0.226) !important;
+}
+
+.icn-max{
+    width: 1.25rem!important;
+}
+
+.icn-max[alt="decrypt"]{
+    width: 1.75rem !important;
+}
+
+.rounded-box{
+    border-radius: 1rem;
+}
+/*-------------------*/
+/* Text area custom */
+/*-----------------*/
+
+.form-control{
+    resize: none;
+    height: 20em;
+}
+
+.textarea{
+    border: none;
+}
+
+.output{
+    display: none;
+}
+
+.img-output{
+    width: 120%;
+}
+
+
+/*------------------------*/
+/* Copy button and Toast */
+/*----------------------*/
+
+.copy-btn{
+    display: none;
+}
+
+/*-----------------------*/
+/* Dark mode Styles CSS */
+/*----------------------*/
+
+
+body.dark-mode {
+    background-color: var(--dark-bg);
+    color: var(--dark-text);
+}
+
+body.dark-mode .text-gray {
+    color: var(--dark-text);
+}
+
+body.dark-mode .text-blue {
+    color: var(--blue);
+}
+
+body.dark-mode .form-check-label {
+    color: var(--dark-text);
+}
+
+body.dark-mode .btn-light {
+    background-color: var(--dark-bg);
+    color: var(--dark-text);
+    border: 1px solid rgba(255, 255, 255, 0.226) !important;
+}
+
+body.dark-mode .entrys{
+    background-color: #2B2B2B;
+}
+body.dark-mode .form-control {
+    background-color: #2B2B2B;
+    color: var(--dark-text);
+}
+
+body.dark-mode .textarea {
+    color: var(--dark-text);
+}
+
+body.dark-mode .rounded-box {
+    border-color: var(--dark-border);
+}
+
+body.dark-mode .copy-btn .button {
+    color: var(--dark-text);
+}
+
+
+/* Media Query 770px below */
+
+@media (max-width: 769px){
+
+    header{
+        padding-left: 5%;
+        padding-right: 5%;
+        display: inline;
+    }
+
+    #encripter_header{
+        width: 2em !important;
+    }
+
+    header .col-6{
+        width: 70%;
+    }
+    .col-6 h1{
+        font-size: 1.5em;
+    }
+
+    header .form-check-label{
+        font-size: 1em !important;
+    }
+
+    .img-output{
+        width: 50%;
+    }
+
+    .col-md-4 .output-group{
+        display: flex;
+        justify-content: center;
+    }
+}
