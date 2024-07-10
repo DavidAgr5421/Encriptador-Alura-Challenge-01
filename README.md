@@ -1,7 +1,4 @@
-
-¡Claro! Aquí tienes un ejemplo de un archivo README para tu proyecto:
-
-Encriptador de Texto
+<h1>Encriptador de Texto</h1>
 Este es un proyecto de encriptador y desencriptador de texto, desarrollado como parte del curso de Oracle. El encriptador convierte las vocales de un texto en sus respectivas claves encriptadas y el desencriptador revierte el texto encriptado a su forma original.
 
 Funcionalidades
