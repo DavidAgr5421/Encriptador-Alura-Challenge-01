@@ -7,6 +7,7 @@
 :root{
     --blue: #6E9CC7;
     --gray: #0000007e;
+    --darkblue: #8dc8ff;
     --dark-bg: #0a0a0a;
     --dark-text: #e0e0e0;
     --dark-border: #dadada;
@@ -53,7 +54,7 @@ header h1{
 /* Encrypt Buttons  */
 /*-----------------*/
 
-.col .encrypt, .decrypt{
+.encrypt, .decrypt{
     border: 1px solid rgba(0, 0, 0, 0.226) !important;
 }
 
@@ -71,6 +72,10 @@ header h1{
 /*-------------------*/
 /* Text area custom */
 /*-----------------*/
+
+.sm-enc{
+    display: none;
+}
 
 .form-control{
     resize: none;
@@ -113,7 +118,7 @@ body.dark-mode .text-gray {
 }
 
 body.dark-mode .text-blue {
-    color: var(--blue);
+    color: var(--darkblue);
 }
 
 body.dark-mode .form-check-label {
@@ -157,6 +162,10 @@ body.dark-mode .copy-btn .button {
         display: inline;
     }
 
+    header .container-xxl{
+        margin-bottom: 1rem !important;
+    }
+
     #encripter_header{
         width: 2em !important;
     }
@@ -172,6 +181,12 @@ body.dark-mode .copy-btn .button {
         font-size: 1em !important;
     }
 
+    .switcher-h{
+        width: 2em !important;
+        height: 1.2em;
+        border: 1px solid rgba(0, 0, 0, 0.589);
+    }
+
     .img-output{
         width: 50%;
     }
@@ -179,5 +194,21 @@ body.dark-mode .copy-btn .button {
     .col-md-4 .output-group{
         display: flex;
         justify-content: center;
+    }
+
+    .encrypt, .decrypt{
+        font-size: 1rem !important;
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+        padding-top: 0.75rem !important;
+        padding-bottom: 0.75rem !important;
+    }  
+
+    .bg-enc{
+        display: none;
+    }
+
+    .sm-enc{
+        display: block;
     }
 }

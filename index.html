@@ -10,13 +10,13 @@
     <title>Encriptador</title>
 </head>
 <header>
-    <div class="container-xxl mt-4 mb-5">
+    <div class="container-xxl mt-4 mb-5 px-5">
         <div class="row justify-content-between align-items-end">
-            <div class="col-6">
+            <div class="col">
                 <img src="assets/icons/logo_icn_light.png" id="encripter_header">
                 <h1 class="text-blue">Encriptador Alura</h1>
             </div>
-            <div class="col-3 d-flex justify-content-end">
+            <div class="col-4 d-flex justify-content-end">
                 <div class="form-check form-switch">
                     <label class="form-check-label fs-5 px-2" for="flexSwitchCheckChecked"> Modo Oscuro </label>
                     <input class="form-check-input switcher-h" type="checkbox" role="switch" id="flexSwitchCheckChecked">
@@ -26,32 +26,53 @@
     </div>
 </header>
 <body>
-    <div class="container-xxl ">
+    <div class="container-xxl px-5">
         <div class="row mb-4">
             <div class="col">
-                <button type="button " class="btn shadow fs-5 btn-light btn-outline-dark d-flex align-items-center py-3 px-4 encrypt rounded-box" id="encrypt">
+                <button type="button " class="btn shadow fs-5 btn-light d-flex align-items-center py-3 px-4 encrypt rounded-box" id="encrypt">
                 <img src="assets/icons/encrypt_icn_light.png" class="icn-max mx-2" >Encriptar</button>
             </div>
-            <div class="col">
-                <button type="button" class="btn shadow fs-5 btn-light btn-outline-dark d-flex align-items-center py-3 px-4 decrypt rounded-box" id="decrypt">
+            <div class="col-6">
+                <button type="button" class="btn shadow fs-5 btn-light d-flex align-items-center py-3 px-4 decrypt rounded-box" id="decrypt">
                 <img src="assets/icons/decrypt_icn_light.png" class="icn-max mx-2" alt="decrypt">Desencriptar</button>
             </div>
         </div>
-        <div class="row border border-2 rounded-box shadow p-2 py-3 mb-4 entrys">
+        <div class="row border border-2 rounded-box shadow p-2 py-3 mb-4 entrys bg-enc">
             <div class="col border-end border-2">
                 <h3 class="border-bottom border-2">Entrada</h3>
-                <textarea class="form-control textarea input" id="input" placeholder="Ingresa el texto a convertir aqui..."></textarea>
+                <textarea class="form-control textarea input input-area" id="input" placeholder="Ingresa el texto a convertir aqui..."></textarea>
             </div>
-            <div class="col">
+            <div class="col-6">
                 <h3 class="border-bottom border-2">Salida</h3>
-                <p class="output" id="output"></p>
+                <p class="output output-area" id="output"></p>
                 <div class="row justify-content-center mt-5 mb-3" id="robotIcon">
                     <div class="col-md-4 output-group mx-n">
-                        <img src="assets/images/robot_globe_light.png" class="img-output">                    
+                        <img src="assets/images/robot_globe_light.png" class="img-output robot-icon">                    
                     </div>
                 </div>
                 <div class="col text-center">
-                    <b class="fs-6 text-gray" id="textReady">Estoy listo para convertir tu texto!</b>
+                    <b class="fs-6 text-gray text-ready" id="textReady">Estoy listo para convertir tu texto!</b>
+                </div>
+                <div class="text-end">
+                    <button id="liveToastBtn" class="button border-0 bg-transparent text-gray fs-5 copy-btn">Copiar <i class="fa-regular fa-copy"></i></button>
+                </div>
+            </div>
+        </div>
+        <div class="container-lg border border-2 rounded-box shadow p-2 py-3 mb-4 entrys sm-enc">
+            <div class="row px-3">
+                <h3 class="border-bottom border-2 pb-2">Entrada</h3>
+                <textarea class="form-control textarea input input-area" id="input" placeholder="Ingresa el texto a convertir aqui..."></textarea>
+            </div> 
+            <div class="row px-3">
+                <h3 class="border-bottom border-top border-2 py-2">Salida</h3>
+                <p class="output output-area" id="output"></p>
+                <div class="row justify-content-center mt-5 mb-3" id="robotIcon">
+                    <div class="col output-group d-flex justify-content-center">
+                        <img src="assets/images/robot_globe_light.png" class="img-output robot-icon">                    
+                    </div>
+                </div>
+                <div class="text-center">
+                    <b class="fs-6 text-gray text-ready" id="textReady">Estoy listo para convertir tu texto!</b>
                 </div>
                 <div class="text-end">
                     <button id="liveToastBtn" class="button border-0 bg-transparent text-gray fs-5 copy-btn">Copiar <i class="fa-regular fa-copy"></i></button>
@@ -76,7 +97,7 @@
 <footer>
     <div class="container fs-6 text-blue d-flex justify-content-between mt-5">
         <p>Autor: David Agudelo - 2024 | Challenge Alura</p>
-        <p><a href="mailto:david542agtr@gmail.com" class="text-decoration-none">david542agtr@gmail.com</a></p>
+        <p><a href="mailto:david542agtr@gmail.com" class="text-decoration-none">david542agr@gmail.com</a></p>
     </div>
 
   </footer>

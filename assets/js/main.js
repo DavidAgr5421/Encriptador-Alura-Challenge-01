@@ -3,16 +3,16 @@
 const dark_mode = document.getElementById('flexSwitchCheckChecked');
 const encrypt_btn = document.getElementById('encrypt');
 const decrypt_btn = document.getElementById('decrypt');
-const copy_btn = document.getElementById('liveToastBtn');
+const copy_btns = document.querySelectorAll('.copy-btn');
 
 const toastContent = document.getElementById('toast')
 
 // Encrypt | Decrypt - Functions
 
-const inputarea = document.getElementById('input');
-const outputarea = document.getElementById('output');
-const robot = document.getElementById('robotIcon');
-const ready_txt = document.getElementById('textReady')
+const inputareas = Array.from(document.querySelectorAll('.input-area'));
+const outputareas = Array.from(document.querySelectorAll('.output-area'));
+const robots = document.querySelectorAll('.robot-icon');
+const ready_txts = document.querySelectorAll('.text-ready');
 
 // Dictionarys
 let encrypt_dct = {
@@ -20,7 +20,7 @@ let encrypt_dct = {
     'e': 'enter',
     'i': 'imes',
     'o': 'ober',
-    'u': 'ufat'
+    'u': 'ufat' 
   }
   
   let decrypt_dct = {
@@ -31,123 +31,113 @@ let encrypt_dct = {
     'ufat': 'u'
 }
 
-function show_output(text){
-    outputarea.innerHTML= text;
-    outputarea.style.display = 'block';
-    robot.style.display = 'none';
-    ready_txt.style.display = 'none';
-    copy_btn.style.display = 'inline';
+// Functions
+
+function show_output(text) {
+    for(var index = 0; index <2; index++) {
+        outputareas[index].innerHTML = text;
+        outputareas[index].style.display = 'block';
+        robots[index].style.display = 'none';
+        ready_txts[index].style.display = 'none';
+        copy_btns[index].style.display = 'inline';
+    };
 }
 
-function revert(){
-    outputarea.innerHTML= '';
-    outputarea.style.display = 'none';
-    robot.style.display = 'flex';
-    ready_txt.style.display = 'block';
-    copy_btn.style.display = 'none';
-}
-
-function encrypt(){
-    if(input.length != 0){
-        input_text = input.value.toLowerCase();
-        inputarea.value = "";
-
-        let test_txt = /^[a-z\s]+$/;
-        encrypted_text = ""
-
-        if(input_text.match(test_txt)){
-            for (let char of input_text) {
-                if (encrypt_dct[char]) {
-                  encrypted_text += encrypt_dct[char];
-                } else {
-                  encrypted_text += char;
-                }
-              }
-            
-            show_output(encrypted_text);
-        }
-        else{
-            revert()
-            alert("El texto a encriptar no puede contener números o acentos...")
-        }
-
-    } else{
-        revert()
-        alert("No has introducido un texto que encriptar...")
+function revert() {
+    for(var index =0; index<2; index++){
+        outputareas[index].innerHTML = '';
+        outputareas[index].style.display = 'none';
+        robots[index].style.display = 'flex';
+        ready_txts[index].style.display = 'block';
+        copy_btns[index].style.display = 'none';
     }
-
-
+    
 }
+
+function encrypt() {
+    const inputareaWithText = inputareas.find(inputarea => inputarea.value.trim() !== "");
+
+    if(inputareaWithText){
+        let input_text = inputareaWithText.value.toLowerCase();
+        inputareaWithText.value = "";
+
+        let encrypted_txt = "";
+        const test_txt = /^[a-z\s]+$/;
+        if(test_txt.test(input_text)){
+            for(var char of input_text){
+                if(encrypt_dct[char]){
+                    encrypted_txt += encrypt_dct[char];
+                }else{
+                    encrypted_txt += char;
+                }
+            }
+            show_output(encrypted_txt);
+        } else{
+            alert("El texto no puede contener números ni caracteres especiales...")
+            revert();
+        }
+    } else{
+        alert("Añade un texto para encriptar...")
+        revert();
+    }
+}
+
 
 function decrypt() {
-    if (inputarea.value.length != 0) {
-        let input_text = inputarea.value.toLowerCase();
-        inputarea.value = "";
+    const inputareaWithText = inputareas.find(inputarea => inputarea.value.trim() !== "");
 
-        let test_txt = /^[a-z\s]+$/;
-        let decrypted_text = "";
+    if(inputareaWithText){
+        let input_text = inputareaWithText.value.toLowerCase();
+        inputareaWithText.value = "";
 
-        if (input_text.match(test_txt)) {
-            while (input_text.length > 0) {
+        let decrypted_txt = "";
+        const test_txt = /^[a-z\s]+$/;
+        if(test_txt.test(input_text)){
+            while(input_text.length > 0){
                 let found = false;
-                for (let key in decrypt_dct) {
-                    if (input_text.startsWith(key)) {
-                        decrypted_text += decrypt_dct[key];
-                        input_text = input_text.slice(key.length);
+                for(let key in decrypt_dct){
+                    if(input_text.startsWith(key)){
+                        decrypted_txt += decrypt_dct[key];
+                        input_text = input_text.slice(key.length)
                         found = true;
                         break;
                     }
                 }
-                if (!found) {
-                    decrypted_text += input_text[0];
+                if(!found){
+                    decrypted_txt += input_text[0];
                     input_text = input_text.slice(1);
                 }
             }
-
-            show_output(decrypted_text);
+            show_output(decrypted_txt);
         } else {
+            alert("El texto no puede contener números ni caracteres especiales...")
             revert();
-            alert("El texto a desencriptar no puede contener números o acentos...");
         }
-
     } else {
+        alert("Añade un texto para desencriptar...")
         revert();
-        alert("No has introducido un texto que desencriptar...");
     }
 }
 
-function clipboard() {
-    navigator.clipboard.writeText(outputarea.innerHTML);
-    var toast = new bootstrap.Toast(toastContent)
+function clipboard(index) {
+    navigator.clipboard.writeText(outputareas[index].innerHTML);
+    var toast = new bootstrap.Toast(toastContent);
     toast.show();
-    
 }
 
 function toggleImages() {
-    // Seleccionar todas las imágenes que necesitan cambiar
     const images = document.querySelectorAll('img');
 
     images.forEach(img => {
-        // Obtener la ruta actual de la imagen
         let src = img.getAttribute('src');
-        
-        // Verificar si la imagen es para modo claro (_light) o oscuro (_dark)
-        if (src.includes('_light')) {
-            if (document.body.classList.contains('dark-mode')) {
-                // Cambiar a la versión para modo oscuro (_dark)
+
+        if (document.body.classList.contains('dark-mode')) {
+            if (src.includes('_light')) {
                 let darkSrc = src.replace('_light', '_dark');
                 img.setAttribute('src', darkSrc);
-            } else {
-                // Cambiar de nuevo a la versión para modo claro (_light)
-                let lightSrc = src.replace('_dark', '_light');
-                img.setAttribute('src', lightSrc);
             }
-        } else if (src.includes('_dark')) {
-            if (document.body.classList.contains('dark-mode')) {
-                // Mantener la versión para modo oscuro (_dark)
-                img.setAttribute('src', src);
-            } else {
-                // Cambiar de nuevo a la versión para modo claro (_light)
+        } else {
+            if (src.includes('_dark')) {
                 let lightSrc = src.replace('_dark', '_light');
                 img.setAttribute('src', lightSrc);
             }
@@ -159,7 +149,9 @@ function toggleImages() {
 // Events Listeners Decrypt | Encrypt
 encrypt_btn.addEventListener('click', encrypt);
 decrypt_btn.addEventListener('click', decrypt);
-copy_btn.addEventListener('click', clipboard);
+copy_btns.forEach((btn, index) => {
+    btn.addEventListener('click', () => clipboard(index));
+});
 dark_mode.addEventListener('change', function() {
     document.body.classList.toggle('dark-mode');
     toggleImages();
