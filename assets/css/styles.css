@@ -151,6 +151,18 @@ body.dark-mode .copy-btn .button {
     color: var(--dark-text);
 }
 
+body.dark-mode .toast-container{
+    color: var(--dark-text) !important;
+}
+
+body.dark-mode .toast-header{
+    background-color: var(--dark-bg);
+    color: var(--dark-text) !important;
+}
+
+body.dark-mode .toast-body{
+    background-color: var(--gray);
+}
 
 /* Media Query 770px below */
 
@@ -181,10 +193,23 @@ body.dark-mode .copy-btn .button {
         font-size: 1em !important;
     }
 
+    header .form-check{
+        padding-left: .0 !important;
+    }
+
+    header .form-switch .form-check-input{
+        margin-left: -1.5em;
+    }
+
     .switcher-h{
         width: 2em !important;
         height: 1.2em;
         border: 1px solid rgba(0, 0, 0, 0.589);
+    }
+
+    body .container-xxl{
+        padding-right: 1.4rem !important;
+        padding-left: 1.4rem !important;
     }
 
     .img-output{
@@ -210,5 +235,88 @@ body.dark-mode .copy-btn .button {
 
     .sm-enc{
         display: block;
+    }
+}
+
+/* Media Query 507px below */
+
+@media (max-width: 507px){
+    header .container-xxl{
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+        margin-bottom: 0.2rem !important;
+    }
+
+    header .form-switch{
+        padding-left: 0;
+    }
+
+    header .form-check{
+        padding-left: 0;
+    }
+
+    header .form-check-label{
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        font-size: 0.8em !important;
+    }
+
+    #encripter_header{
+        width: 1.4em !important;
+    }
+
+    header h1{
+        font-size: calc(1rem + 1.2vw) !important;
+    }
+}
+
+@media (max-width: 387px){
+    header .form-check-label{
+        display: none;
+    }
+
+    body .container-xxl{
+        padding-right: 1.2rem !important;
+        padding-left: 1.2rem !important;
+    }
+
+    textarea.form-control{
+        font-size: calc(0.7rem + 1vw) !important;
+    }
+
+    .encrypt, .decrypt {
+        font-size: calc(0.7rem + 0.5vw) !important;
+        padding-left: 0.7rem !important;
+        padding-right: 0.7rem !important;
+        padding-top: 0.6rem !important;
+        padding-bottom: 0.6rem !important;
+    }
+
+    .icn-max{
+        width: 1rem !important;
+    }
+
+    .icn-max[alt="decrypt"] {
+        width: 1.5rem !important;
+    }
+
+    body .container-lg h3{
+        font-size: calc(1rem + .6vw);
+    }
+
+    body .form-control .textarea{
+        font-size: 0.9rem !important;
+    }
+
+    body .text-ready{
+        font-size: 0.9rem !important;
+    }
+
+    body .footer-note{
+        font-size: calc(0.7rem + 1vw) !important;
+    }
+
+    footer p{
+        font-size: calc(0.7rem + 1vw) !important;
     }
 }
